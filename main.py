@@ -48,6 +48,7 @@ model = keras.models.Sequential([
 tf.keras.utils.plot_model(model,show_shapes=True)
 
 #Adam optimizer, the optimizer gets the minimum of loss function, gets the weights that reduces the errors, because it has adapter learning rate and momentum, this algorithm is an extension of Gradient Descent
+#we use the"sparse_categorical_crossentropy" loss because we have sparselabels (i.e., for each instance, there is just a target class index)
 model.compile(optimizer='Adam',loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 history = model.fit(x_test, y_test, epochs=20, validation_data=(x_val, y_val), batch_size=64)
